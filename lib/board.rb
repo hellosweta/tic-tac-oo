@@ -1,5 +1,3 @@
-require "pry"
-
 class Board
   attr_accessor :board
 
@@ -8,10 +6,8 @@ class Board
     build_empty_board
   end
 
-  def stringify_board
-    <<~SQUIGGLY_HEREDOC
-      #{board}
-    SQUIGGLY_HEREDOC
+  def stringify
+    board
   end
 
   private

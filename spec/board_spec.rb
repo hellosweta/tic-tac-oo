@@ -11,12 +11,11 @@ RSpec.describe Board do
         |__|__|__|
         |  |  |  |
         |__|__|__|
-
       SQUIGGLY_HEREDOC
 
       new_board = Board.new
 
-      expect(new_board.stringify_board).to eq(empty_board)
+      expect(new_board.stringify).to eq(empty_board)
     end
   end
 end

@@ -12,7 +12,6 @@ RSpec.describe "GameRunner" do
         |__|__|__|
         |  |  |  |
         |__|__|__|
-
       SQUIGGLY_HEREDOC
 
       output = StringIO.new

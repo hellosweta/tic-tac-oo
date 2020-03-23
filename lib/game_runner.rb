@@ -1,5 +1,4 @@
-require_relative "./board.rb"
-require "pry"
+require_relative "board.rb"
 
 class GameRunner
   def self.run(*args)
@@ -7,13 +6,14 @@ class GameRunner
   end
 
   def run(output)
-    output.print empty_board
+    output.puts empty_board
+    puts output.string
   end
 
   private
 
   def empty_board
-    Board.new.stringify_board
+    Board.new.stringify
   end
 end
 
