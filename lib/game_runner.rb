@@ -1,20 +1,10 @@
-require_relative "board.rb"
+require_relative "game.rb"
 
 class GameRunner
-  def self.run(*args)
-    GameRunner.new.run(*args)
-  end
-
-  def run(output)
-    output.puts empty_board
+  def run
+    output = Game.run(StringIO.new)
     puts output.string
-  end
-
-  private
-
-  def empty_board
-    Board.new.stringify
   end
 end
 
-GameRunner.run(StringIO.new)
+GameRunner.new.run
