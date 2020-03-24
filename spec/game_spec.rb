@@ -1,7 +1,7 @@
 require "spec_helper"
-require_relative "../game_runner"
+require_relative "../lib/game"
 
-RSpec.describe "GameRunner" do
+RSpec.describe Game do
   describe "#run" do
     it "displays an empty board" do
       empty_board = <<~SQUIGGLY_HEREDOC
@@ -15,7 +15,7 @@ RSpec.describe "GameRunner" do
       SQUIGGLY_HEREDOC
 
       output = StringIO.new
-      GameRunner.run(output)
+      Game.run(output)
 
       expect(output.string).to eq(empty_board)
     end
