@@ -7,7 +7,6 @@ class Game
 
   def run(output)
     output.puts empty_board
-    output
   end
 
   private
