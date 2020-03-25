@@ -12,6 +12,6 @@ class Game
   private
 
   def empty_board
-    Board.new.grid
+    Board.new.to_s
   end
 end

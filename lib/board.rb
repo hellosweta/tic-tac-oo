@@ -7,6 +7,10 @@ class Board
     add_numbers
   end
 
+  def to_s
+    grid.to_s
+  end
+
   private
 
   def row
