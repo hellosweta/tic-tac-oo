@@ -6,12 +6,12 @@ class Game
   end
 
   def run(output)
-    output.puts empty_board
+    output.puts empty_board.board
   end
 
   private
 
   def empty_board
-    Board.new.stringify
+    Board.new
   end
 end

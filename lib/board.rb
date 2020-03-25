@@ -3,11 +3,8 @@ class Board
 
   def initialize
     @board = top_row
-    build_empty_board
-  end
-
-  def stringify
-    board
+    build_build_grid
+    add_numbers
   end
 
   private
@@ -20,9 +17,13 @@ class Board
     " __ __ __\n".freeze
   end
 
-  def build_empty_board
+  def build_grid
     3.times do
       @board += row
     end
+  end
+
+  def add_numbers
+
   end
 end
