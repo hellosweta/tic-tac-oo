@@ -12,6 +12,6 @@ class Game
   private
 
   def empty_board
-    Board.new.stringify
+    Board.new.to_s
   end
 end

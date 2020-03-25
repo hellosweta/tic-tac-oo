@@ -1,13 +1,14 @@
 class Board
-  attr_accessor :board
+  attr_reader :grid
 
   def initialize
-    @board = top_row
-    build_empty_board
+    @grid = top_row
+    build_grid
+    add_numbers
   end
 
-  def stringify
-    board
+  def to_s
+    grid.to_s
   end
 
   private
@@ -20,9 +21,13 @@ class Board
     " __ __ __\n".freeze
   end
 
-  def build_empty_board
+  def build_grid
     3.times do
-      @board += row
+      @grid += row
     end
+  end
+
+  def add_numbers
+
   end
 end
