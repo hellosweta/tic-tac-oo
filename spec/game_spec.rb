@@ -3,7 +3,7 @@ require_relative "../lib/game"
 
 RSpec.describe Game do
   describe "#run" do
-    it "displays an empty board" do
+    it "displays an empty numbered board" do
       empty_board = <<~SQUIGGLY_HEREDOC
            1  2  3
            __ __ __

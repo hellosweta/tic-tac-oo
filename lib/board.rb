@@ -1,9 +1,9 @@
 class Board
-  attr_accessor :board
+  attr_reader :grid
 
   def initialize
-    @board = top_row
-    build_build_grid
+    @grid = top_row
+    build_grid
     add_numbers
   end
 
@@ -19,7 +19,7 @@ class Board
 
   def build_grid
     3.times do
-      @board += row
+      @grid += row
     end
   end
 
