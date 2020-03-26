@@ -17,26 +17,40 @@ class Board
   end
 
   def build_grid
-    add_top_grid_row
-    add_grid_rows
+    add_top_row
+    add_rows
   end
 
-  def add_top_grid_row
-    @grid += top_grid_row
+  def add_top_row
+    @grid += top_row
   end
 
-  def top_grid_row
+  def top_row
     "   __ __ __\n".freeze
   end
 
-  def add_grid_rows
-    3.times do |i|
-      @grid = grid + column_labels[i] + row
-    end
+  def add_rows
+    @grid += rows
+  end
+
+  def rows
+    first_labeled_row + second_labeled_row + third_labeled_row
+  end
+
+  def first_labeled_row
+    column_labels[0] + row
+  end
+
+  def second_labeled_row
+    column_labels[1] + row
+  end
+
+  def third_labeled_row
+    column_labels[2] + row
   end
 
   def column_labels
-    ["A ", "B ", "C "]
+    ["A ", "B ", "C "].freeze
   end
 
   def row
