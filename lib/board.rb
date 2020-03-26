@@ -1,13 +1,10 @@
 class Board
-  attr_reader :grid
-
   def initialize
-    @grid = numbered_row
-    build_grid
+    @grid = build_grid
   end
 
   def to_s
-    grid
+    @grid
   end
 
   private
@@ -17,6 +14,7 @@ class Board
   end
 
   def build_grid
+    @grid = numbered_row
     add_top_row
     add_rows
   end
@@ -38,19 +36,15 @@ class Board
   end
 
   def first_labeled_row
-    column_labels[0] + row
+    "A " + row
   end
 
   def second_labeled_row
-    column_labels[1] + row
+    "B " + row
   end
 
   def third_labeled_row
-    column_labels[2] + row
-  end
-
-  def column_labels
-    ["A ", "B ", "C "].freeze
+    "C " + row
   end
 
   def row
