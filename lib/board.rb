@@ -2,32 +2,42 @@ class Board
   attr_reader :grid
 
   def initialize
-    @grid = top_row
-    build_grid
-    add_numbers
+    @grid = build_grid
   end
 
   def to_s
-    grid.to_s
+    grid
   end
 
   private
 
-  def row
-    "|  |  |  |\n|__|__|__|\n".freeze
-  end
-
-  def top_row
-    " __ __ __\n".freeze
+  def numbered_row
+    "   1  2  3\n".freeze
   end
 
   def build_grid
-    3.times do
-      @grid += row
-    end
+    @grid = numbered_row
+    add_top_row
+    add_rows
   end
 
-  def add_numbers
+  def add_top_row
+    @grid += top_row
+  end
 
+  def top_row
+    "   __ __ __\n".freeze
+  end
+
+  def add_rows
+    @grid += rows
+  end
+
+  def rows
+    row("A") + row("B") + row("C")
+  end
+
+  def row(label)
+    label + " |  |  |  |\n  |__|__|__|\n".freeze
   end
 end
