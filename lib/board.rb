@@ -34,22 +34,10 @@ class Board
   end
 
   def rows
-    first_labeled_row + second_labeled_row + third_labeled_row
+    row("A") + row("B") + row("C")
   end
 
-  def first_labeled_row
-    "A " + row
-  end
-
-  def second_labeled_row
-    "B " + row
-  end
-
-  def third_labeled_row
-    "C " + row
-  end
-
-  def row
-    "|  |  |  |\n  |__|__|__|\n".freeze
+  def row(label)
+    label + " |  |  |  |\n  |__|__|__|\n".freeze
   end
 end
