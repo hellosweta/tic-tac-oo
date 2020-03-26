@@ -1,10 +1,12 @@
 class Board
+  attr_reader :grid
+
   def initialize
     @grid = build_grid
   end
 
   def to_s
-    @grid
+    grid
   end
 
   private
