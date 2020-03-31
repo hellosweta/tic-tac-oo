@@ -2,7 +2,7 @@ require_relative "board.rb"
 require_relative "coordinates.rb"
 
 class Game
-  attr_reader :std_out, :std_in
+  attr_reader :std_out, :std_in, :coordinates
 
   def initialize(std_out, std_in)
     @std_out = std_out
@@ -14,16 +14,16 @@ class Game
   end
 
   def run
-    coordinates = start_game
-    retry_until_valid(coordinates)
-    raise SystemExit
+    start_game
+    retry_until_valid
+    end_game
   end
 
   private
 
   def start_game
     std_out.puts game_start_message
-    std_in.gets
+    set_coordinates_from_user_input
   end
 
   def game_start_message
@@ -42,23 +42,30 @@ class Game
     'Enter a row letter and column number. For Example: "A1".'
   end
 
-  def retry_until_valid(input)
-    until valid_input?(input)
-      input = reprompt_input
+  def retry_until_valid
+    until valid_input?
+      reprompt_input
     end
   end
 
-  def valid_input?(input)
-    coordinates = Coordinates.new(input)
+  def valid_input?
     coordinates.valid?
+  end
+
+  def set_coordinates_from_user_input
+    @coordinates = Coordinates.new(std_in.gets)
   end
 
   def reprompt_input
     std_out.puts error_message
-    std_in.gets
+    set_coordinates_from_user_input
   end
 
   def error_message
     "Hm, that doesn't seem quite right." + "\n" + instructions_prompt
+  end
+
+  def end_game
+    raise SystemExit
   end
 end
