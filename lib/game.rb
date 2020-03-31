@@ -1,25 +1,31 @@
 require_relative "board.rb"
+require_relative "coordinates.rb"
 
 class Game
-  def self.run(*args)
-    Game.new.run(*args)
+  def initialize(std_out, std_in)
+    @std_out = std_out
+    @std_in = std_in
   end
 
-  def run(output, input)
-    output.puts game_start_message
-    user_input = input.gets
-    check_for_valid_coordinates(user_input, input, output)
+  def self.run(*args)
+    Game.new(*args).run
+  end
+
+  def run
+    coordinates = start_game
+    retry_until_valid(coordinates)
     SystemExit
   end
 
   private
 
-  def game_start_message
-    empty_board + "\n" + start_prompt
+  def start_game
+    @std_out.puts game_start_message
+    @std_in.gets
   end
 
-  def error_message
-    'Hm, that doesn\'t seem quite right. Enter a row and column. For Example: "A1".'
+  def game_start_message
+    empty_board + "\n" + start_prompt + "\n" + instructions_prompt
   end
 
   def empty_board
@@ -27,22 +33,31 @@ class Game
   end
 
   def start_prompt
-    "Where would you like to play?\nEnter row letter and then column number."
+    "Where would you like to play?"
   end
 
-  def check_for_valid_coordinates(user_input, std_in, std_out)
-    while valid?(user_input) === false
-      std_out.puts error_message
-      user_input = std_in.gets
+  def instructions_prompt
+    'Enter a row letter and column number. For Example: "A1".'
+  end
+
+  def retry_until_valid(input)
+    until valid_input?(input)
+      input = reprompt_input
     end
   end
 
-  def valid?(input)
-    row = input[0].capitalize
-    column = input[1].capitalize
-    rows = ["A", "B", "C"]
-    columns = ["1", "2", "3"]
+  def valid_input?(input)
+    false if input.length != 2
+    coordinates = Coordinates.new(input)
+    coordinates.valid?
+  end
 
-    rows.include?(row) && columns.include?(column)
+  def reprompt_input
+    @std_out.puts error_message
+    @std_in.gets
+  end
+
+  def error_message
+    "Hm, that doesn't seem quite right." + "\n" + instructions_prompt
   end
 end

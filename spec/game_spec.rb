@@ -3,7 +3,7 @@ require_relative "../lib/game"
 
 RSpec.describe Game do
   describe "#run" do
-    it "returns an error when user enters an invalid coordinate" do
+    it "reprompts with error until valid when user enters an invalid coordinates" do
       start_message = <<~SQUIGGLY_HEREDOC
            1  2  3
            __ __ __
@@ -15,7 +15,7 @@ RSpec.describe Game do
           |__|__|__|
 
         Where would you like to play?
-        Enter row letter and then column number.
+        Enter a row letter and column number. For Example: "A1".
       SQUIGGLY_HEREDOC
 
       mock_stdout = StringIO.new
