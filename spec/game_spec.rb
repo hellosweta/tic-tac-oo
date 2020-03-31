@@ -25,7 +25,7 @@ RSpec.describe Game do
       Game.run(mock_stdout, mock_stdin)
 
       expect(mock_stdout.string).to include(start_message)
-      expect(mock_stdout.string).to include("Error")
+      expect(mock_stdout.string).to include("Hm, that doesn\'t seem quite right")
     end
 
     it "exits when user inputs a valid coordinate" do
