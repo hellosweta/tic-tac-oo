@@ -11,7 +11,7 @@ RSpec.describe Coordinates do
       expect(coordinates.valid?).to be false
     end
 
-    it "returns false when user entered column is above first column" do
+    it "returns false when user entered column is before first column" do
       input = "a0"
 
       coordinates = Coordinates.new(input)
