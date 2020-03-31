@@ -1,21 +1,37 @@
 class Coordinates
-  def initialize(input)
-    @row = input[0].capitalize
-    @column = input[1].capitalize
+  attr_reader :user_input, :row, :column
+
+  def initialize(user_input)
+    @user_input = user_input
   end
 
   def valid?
+    return false unless correct_length?
     row_valid? && column_valid?
+  end
+
+  def correct_length?
+    user_input.length == 2
   end
 
   private
 
   def row_valid?
-    row_names.include?(@row)
+    set_row
+    row_names.include?(row)
   end
 
   def column_valid?
-    column_names.include?(@column)
+    set_column
+    column_names.include?(column)
+  end
+
+  def set_row
+    @row = user_input[0].capitalize
+  end
+
+  def set_column
+    @column = user_input[1].capitalize
   end
 
   def row_names

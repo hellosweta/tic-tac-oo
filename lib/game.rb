@@ -49,7 +49,6 @@ class Game
   end
 
   def valid_input?(input)
-    false if input.length != 2
     coordinates = Coordinates.new(input)
     coordinates.valid?
   end
