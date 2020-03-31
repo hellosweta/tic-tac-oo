@@ -15,7 +15,7 @@ class Game
 
   def run
     start_game
-    retry_until_valid
+    get_user_coordinates
     end_game
   end
 
@@ -42,9 +42,9 @@ class Game
     'Enter a row letter and column number. For Example: "A1".'
   end
 
-  def retry_until_valid
+  def get_user_coordinates
     until valid_input?
-      reprompt_input
+      prompt_for_new_coordinates
     end
   end
 
@@ -53,10 +53,10 @@ class Game
   end
 
   def set_coordinates_from_user_input
-    @coordinates = Coordinates.new(std_in.gets)
+    @coordinates = Coordinates.new(std_in.gets.chomp)
   end
 
-  def reprompt_input
+  def prompt_for_new_coordinates
     std_out.puts error_message
     set_coordinates_from_user_input
   end
