@@ -10,11 +10,11 @@ class Coordinates
     row_valid? && column_valid?
   end
 
+  private
+
   def correct_length?
     user_input.length == 2
   end
-
-  private
 
   def row_valid?
     set_row
