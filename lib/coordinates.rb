@@ -6,8 +6,7 @@ class Coordinates
   end
 
   def valid?
-    return false unless correct_length?
-    row_valid? && column_valid?
+    correct_length? && row_valid? && column_valid?
   end
 
   private
