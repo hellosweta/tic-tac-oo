@@ -2,6 +2,8 @@ require_relative "board.rb"
 require_relative "coordinates.rb"
 
 class Game
+  attr_reader :std_out, :std_in
+
   def initialize(std_out, std_in)
     @std_out = std_out
     @std_in = std_in
@@ -20,8 +22,8 @@ class Game
   private
 
   def start_game
-    @std_out.puts game_start_message
-    @std_in.gets
+    std_out.puts game_start_message
+    std_in.gets
   end
 
   def game_start_message
@@ -53,8 +55,8 @@ class Game
   end
 
   def reprompt_input
-    @std_out.puts error_message
-    @std_in.gets
+    std_out.puts error_message
+    std_in.gets
   end
 
   def error_message
