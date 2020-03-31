@@ -21,8 +21,9 @@ RSpec.describe Game do
       mock_stdout = StringIO.new
       mock_stdin = StringIO.new
       allow(mock_stdin).to receive(:gets).and_return("1A", "A1")
-
-      Game.run(mock_stdout, mock_stdin)
+      expect {
+        Game.run(mock_stdout, mock_stdin)
+      }.to raise_error SystemExit
 
       expect(mock_stdout.string).to include(start_message)
       expect(mock_stdout.string).to include("Hm, that doesn\'t seem quite right")
@@ -35,7 +36,7 @@ RSpec.describe Game do
 
       expect {
         Game.run(mock_stdout, mock_stdin)
-      }.to exit
+      }.to raise_error SystemExit
     end
   end
 end

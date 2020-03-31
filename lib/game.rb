@@ -14,7 +14,7 @@ class Game
   def run
     coordinates = start_game
     retry_until_valid(coordinates)
-    SystemExit
+    raise SystemExit
   end
 
   private
