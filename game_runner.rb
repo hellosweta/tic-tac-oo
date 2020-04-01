@@ -1,3 +1,3 @@
 require_relative "lib/game.rb"
 
-Game.run($stdout, $stdin)
+Game.run(std_out: $stdout, std_in: $stdin)
